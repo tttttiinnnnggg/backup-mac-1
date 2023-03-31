@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+#Filename: backup-mac
+
+import os
+import time
+import pandas as pd
+
+#導入時間並格式化
+datetime_dt=datetime.datetime.today()
+datetime_str=datetime_dt.strftime("%Y_%m%d_%H%M")
+
+#將備份檔案的資料夾設為目的地
+target_dir = '/Users/john/backup/'
+
+＃將文件集合成一個zip檔
+＃把日期設為子目錄名稱
+today = target_dir + time.strftime('%Y%m%d')
+
+#當下時間為zip檔生成的時間
+now = time.strftime('%H%M%S')
+
+# 輸入備註內容
+comment = raw_input('输入備註（可選）--> ')
+if len(comment) == 0: # 檢查是否有增加備註
+  target = today + os.sep + now + '.zip'
+else:
+  target = today + os.sep + now + '_' + comment.replace(' ', '_') + '.zip'
+
+# 如果沒有目錄
+if not os.path.exists(today):
+  os.mkdir(today) # 建造目錄
+  print '成功建造新的目錄', today
+else:
+  print '當前目錄已存在'
+
+# 用zip命令將檔案加入zip中
+zip_command = "zip -qr %s %s" % (target, ' '.join(source)
+
+# 執行備份
+if os.system(zip_command) == 0:
+print '成功備份至', target
+else:
+  print '備份失敗', zip_command
