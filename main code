@@ -38,7 +38,7 @@ else:
 source = ['*.HEIC']
 #zip_command =("cd /Users/johns/&&zip -r %s %s" % (target, ' '.join(source)))
 #print(zip_command)
-zip_command =f'find /Users -name \"*.HEIC\" -print | zip -@ {target}'
+zip_command =(f'find /Users -name \"*.HEIC\" -print | zip -@ {target}')
 
 #print(zip_command)
 #
